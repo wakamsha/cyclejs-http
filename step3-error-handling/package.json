@@ -1,0 +1,33 @@
+{
+  "name": "step3-error-handling",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "wakamsha",
+  "license": "MIT",
+  "dependencies": {
+    "@cycle/dom": "^19.3.0",
+    "@cycle/http": "^14.8.0",
+    "@cycle/run": "^3.4.0",
+    "@cycle/rxjs-run": "7.2.0",
+    "rxjs": "^5.5.2",
+    "xstream": "^11.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "concurrently": "^3.5.0",
+    "pug": "^2.0.0-rc.4",
+    "pug-cli": "^1.0.0-alpha6",
+    "stylus": "^0.54.5",
+    "ts-loader": "^3.1.0",
+    "typescript": "^2.5.3",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "reset": "rm -rf public; mkdir public",
+    "template": "pug src/templates/index.pug -o public/ -w",
+    "style": "stylus src/styles/main.styl -o public/app.css -w",
+    "script": "webpack --config webpack.config.js -d --watch --progress --colors",
+    "serv": "browser-sync start -c bs-config.js",
+    "start": "yarn run reset; concurrently \"yarn run template\" \"yarn run style\" \"yarn run script\" \"yarn run serv\""
+  }
+}
